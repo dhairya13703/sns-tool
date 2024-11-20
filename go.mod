@@ -1,4 +1,3 @@
-// module sns-tool
 module github.com/dhairya13703/sns-tool
 
 go 1.23.2
