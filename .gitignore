@@ -28,3 +28,4 @@ Thumbs.db
 # Generated CSV files
 *.csv
 dist/
+manual_dist/

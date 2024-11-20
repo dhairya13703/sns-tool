@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Get the script's directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# Get the project root directory (one level up from script directory)
+PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+
 # Configuration
 S3_BUCKET="sns-tool-binaries"
 AWS_PROFILE="${AWS_PROFILE:-my}"  # Use specified profile or default
@@ -10,9 +15,13 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo -e "${GREEN}Building binaries...${NC}"
+echo -e "Project root: ${PROJECT_ROOT}"
 
-# Create dist directory
-mkdir -p dist
+# Change to project root directory
+cd "$PROJECT_ROOT" || exit 1
+
+# Create manual_dist directory
+mkdir -p manual_dist
 
 # Build for each platform
 PLATFORMS=("linux/amd64" "darwin/amd64" "windows/amd64")
@@ -30,7 +39,7 @@ for platform in "${PLATFORMS[@]}"; do
         binary_name="sns-tool"
     fi
     
-    output_name="dist/sns-tool-${GOOS}-${GOARCH}"
+    output_name="manual_dist/sns-tool-${GOOS}-${GOARCH}"
     if [ "$GOOS" = "windows" ]; then
         output_name="${output_name}.exe"
     fi
@@ -51,7 +60,7 @@ done
 echo -e "${GREEN}Uploading to S3...${NC}"
 
 # Upload to S3 with proper content type and ACL
-for file in dist/*; do
+for file in manual_dist/*; do
     filename=$(basename "$file")
     
     # Set content type based on file extension
@@ -77,7 +86,7 @@ done
 
 # Upload install script
 echo -e "${GREEN}Uploading install script...${NC}"
-aws s3 cp scripts/install.sh "s3://${S3_BUCKET}/install.sh" \
+aws s3 cp "${SCRIPT_DIR}/install.sh" "s3://${S3_BUCKET}/install.sh" \
     --content-type "text/x-shellscript" \
     --acl public-read \
     --profile "$AWS_PROFILE"
