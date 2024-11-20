@@ -1,5 +1,8 @@
 # AWS SNS Cross-Account Subscription Tool
 
+## Installaton
+[Installation](INSTALL.md)
+
 A command-line tool to analyze AWS SNS topics and identify cross-account Lambda subscriptions across different AWS accounts.
 
 ## Features
@@ -10,7 +13,7 @@ A command-line tool to analyze AWS SNS topics and identify cross-account Lambda 
 - CSV export functionality
 - Easy-to-use command-line interface with short and long-form flags
 
-## Installation
+## Manual Installation
 
 ### Using Go Install
 
