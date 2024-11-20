@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"sns-tool/pkg/models"
+	"github.com/dhairya13703/sns-tool/pkg/models"
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/sns"

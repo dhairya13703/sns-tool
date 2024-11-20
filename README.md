@@ -17,14 +17,14 @@ A command-line tool to analyze AWS SNS topics and identify cross-account Lambda 
 If you have Go installed (version 1.21 or later), you can install directly using:
 
 ```bash
-go install github.com/yourusername/sns-tool@latest
+go install github.com/dhairya13703/sns-tool@latest
 ```
 
 ### Building from Source
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/sns-tool.git
+git clone https://github.com/dhairya13703/sns-tool.git
 cd sns-tool
 ```
 

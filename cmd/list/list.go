@@ -6,8 +6,9 @@ import (
 	"os"
 	"time"
 
-	"sns-tool/pkg/aws"
-	"sns-tool/pkg/models"
+	"github.com/dhairya13703/sns-tool/pkg/models"
+
+	"github.com/dhairya13703/sns-tool/pkg/aws"
 
 	"github.com/spf13/cobra"
 )

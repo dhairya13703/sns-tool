@@ -2,7 +2,8 @@ package main
 
 import (
 	"os"
-	"sns-tool/cmd/root"
+
+	"github.com/dhairya13703/sns-tool/cmd/root"
 )
 
 func main() {
